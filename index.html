@@ -5,56 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Halaman Tidak Ditemukan - 404</title>
     <style>
-        /* Revisi Kode Halaman Error 404 dengan Background Awan */
+        /* Revisi Tampilan Error 404 - Awan Terlihat Seperti Awan */
         body, html {
             margin: 0;
             padding: 0;
             width: 100%;
             min-height: 100vh;
-            background-color: #f4f4f4; /* Latar belakang dasar */
-            color: #333; /* Warna teks utama gelap */
-            font-family: sans-serif; /* Font standar yang aman */
-            text-align: center; /* Pusatkan teks di body */
-            overflow: hidden; /* Sembunyikan scrollbar jika awan keluar batas */
+            background-color: #f0f8ff; /* Latar belakang biru muda yang lembut */
+            color: #555; /* Warna teks abu-abu yang lebih lembut */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font yang umum dan nyaman */
+            text-align: center;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         #igniel404 {
-            position: fixed; /* Agar tetap di tengah viewport */
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%); /* Memusatkan secara sempurna */
-            background-color: rgba(255, 255, 255, 0.8); /* Latar belakang semi-transparan untuk kontras teks */
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            z-index: 10; /* Pastikan teks berada di atas awan */
+            background-color: rgba(255, 255, 255, 0.9); /* Latar belakang putih semi-transparan */
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            z-index: 10;
+            text-align: center;
         }
 
         #error-text span {
-            font-size: 5em;
+            font-size: 6em;
             color: #d32f2f;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             display: block;
         }
 
         #error-text p {
-            font-size: 1.5em;
-            margin-bottom: 20px;
+            font-size: 1.2em;
+            margin-bottom: 25px;
+            line-height: 1.6;
             display: block;
-        }
-
-        #error-text a {
-            color: #007bff;
-            text-decoration: none;
         }
 
         #error-text a.back {
             display: inline-block;
-            padding: 10px 20px;
+            padding: 12px 24px;
             background-color: #007bff;
             color: white;
-            border-radius: 5px;
+            text-decoration: none;
+            border-radius: 8px;
             transition: background-color 0.3s ease;
+            font-size: 1em;
         }
 
         #error-text a.back:hover {
@@ -62,18 +60,19 @@
         }
 
         #error-text #copyright {
-            font-size: 0.8em;
-            color: #777;
-            margin-top: 20px;
+            font-size: 0.9em;
+            color: #888;
+            margin-top: 30px;
             display: block;
         }
 
-        /* Gaya Awan */
+        /* Gaya Awan - Diperbaiki agar terlihat seperti awan */
         #clouds {
             position: fixed;
             width: 100%;
             height: 100%;
-            z-index: 1; /* Pastikan awan berada di bawah teks */
+            z-index: 1;
+            opacity: 0.6;
         }
 
         .cloud {
@@ -85,11 +84,11 @@
             background: -moz-linear-gradient(top, #fff 100%);
             background: -ms-linear-gradient(top, #fff 100%);
             background: -o-linear-gradient(top, #fff 100%);
-            border-radius: 100px;
+            border-radius: 100px; /* Membuat bentuk oval dasar */
             -webkit-border-radius: 100px;
             -moz-border-radius: 100px;
             position: absolute;
-            z-index: -1; /* Pastikan di bawah elemen lain dalam #clouds */
+            z-index: -1;
             transition: ease 1s;
         }
 
@@ -222,7 +221,7 @@
             }
         }
 
-        @import url('https://fonts.googleapis.com/css?family=Ruda:400,700');
+        @import url('https://fonts.googleapis.com/css?family=Ruda:400,700'); /* Pastikan font ini tersedia */
     </style>
 </head>
 <body>
