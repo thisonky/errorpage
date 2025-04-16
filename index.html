@@ -5,243 +5,185 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Halaman Tidak Ditemukan - 404</title>
     <style>
-        /* Revisi Tampilan Error 404 - Awan Terlihat Seperti Awan */
         body, html {
             margin: 0;
             padding: 0;
             width: 100%;
             min-height: 100vh;
-            background-color: #f0f8ff; /* Latar belakang biru muda yang lembut */
-            color: #555; /* Warna teks abu-abu yang lebih lembut */
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font yang umum dan nyaman */
-            text-align: center;
-            overflow: hidden;
+            background-color: #f0f0f0; /* Latar belakang abu-abu muda */
+            font-family: 'Ruda', sans-serif; /* Font yang digunakan pada contoh */
+            overflow: hidden; /* Mencegah scroll karena animasi awan */
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column; /* Menata elemen secara vertikal */
         }
 
-        #igniel404 {
-            background-color: rgba(255, 255, 255, 0.9); /* Latar belakang putih semi-transparan */
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            z-index: 10;
+        #error-container {
             text-align: center;
+            color: #555; /* Warna teks utama */
+            z-index: 2; /* Pastikan teks di atas awan */
         }
 
-        #error-text span {
-            font-size: 6em;
-            color: #d32f2f;
-            margin-bottom: 15px;
-            display: block;
+        .error-code {
+            font-size: 8em;
+            color: #333;
+            margin-bottom: 0.5em;
+            font-weight: bold;
         }
 
-        #error-text p {
-            font-size: 1.2em;
-            margin-bottom: 25px;
-            line-height: 1.6;
-            display: block;
+        .error-message {
+            font-size: 1.5em;
+            margin-bottom: 1em;
         }
 
-        #error-text a.back {
+        .back-link {
             display: inline-block;
-            padding: 12px 24px;
-            background-color: #007bff;
+            padding: 0.7em 1.5em;
+            background-color: #3498db; /* Warna tombol biru */
             color: white;
             text-decoration: none;
-            border-radius: 8px;
+            border-radius: 5px;
             transition: background-color 0.3s ease;
             font-size: 1em;
         }
 
-        #error-text a.back:hover {
-            background-color: #0056b3;
+        .back-link:hover {
+            background-color: #2980b9;
         }
 
-        #error-text #copyright {
-            font-size: 0.9em;
-            color: #888;
-            margin-top: 30px;
-            display: block;
+        .copyright {
+            font-size: 0.8em;
+            color: #777;
+            margin-top: 2em;
         }
 
-        /* Gaya Awan - Diperbaiki agar terlihat seperti awan */
-        #clouds {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            opacity: 0.6;
-        }
-
+        /* Animasi Awan */
         .cloud {
-            width: 350px;
-            height: 120px;
-            background: #fff;
-            background: linear-gradient(top, #fff 100%);
-            background: -webkit-linear-gradient(top, #fff 100%);
-            background: -moz-linear-gradient(top, #fff 100%);
-            background: -ms-linear-gradient(top, #fff 100%);
-            background: -o-linear-gradient(top, #fff 100%);
-            border-radius: 100px; /* Membuat bentuk oval dasar */
-            -webkit-border-radius: 100px;
-            -moz-border-radius: 100px;
             position: absolute;
-            z-index: -1;
-            transition: ease 1s;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0.7;
         }
 
-        .cloud:after,
-        .cloud:before {
+        .cloud::before,
+        .cloud::after {
             content: '';
             position: absolute;
-            background: #fff;
-            z-index: -1;
+            background-color: white;
+            border-radius: 50%;
         }
 
-        .cloud:after {
+        /* Ukuran dan Posisi Awan */
+        .cloud1 {
+            width: 150px;
+            height: 60px;
+            top: 10%;
+            left: 15%;
+            animation: moveCloud1 15s linear infinite alternate;
+        }
+
+        .cloud1::before {
+            width: 50px;
+            height: 50px;
+            top: -20px;
+            left: 30px;
+        }
+
+        .cloud1::after {
+            width: 80px;
+            height: 80px;
+            top: -30px;
+            right: 10px;
+        }
+
+        .cloud2 {
+            width: 200px;
+            height: 80px;
+            top: 25%;
+            right: 10%;
+            animation: moveCloud2 20s linear infinite alternate-reverse;
+        }
+
+        .cloud2::before {
+            width: 70px;
+            height: 70px;
+            top: -30px;
+            left: 20px;
+        }
+
+        .cloud2::after {
             width: 100px;
             height: 100px;
-            top: -50px;
-            left: 50px;
-            border-radius: 100px;
-            -webkit-border-radius: 100px;
-            -moz-border-radius: 100px;
+            bottom: -40px;
+            right: 20px;
         }
 
-        .cloud:before {
+        .cloud3 {
+            width: 100px;
+            height: 40px;
+            bottom: 15%;
+            left: 30%;
+            animation: moveCloud3 12s linear infinite alternate;
+        }
+
+        .cloud3::before {
+            width: 30px;
+            height: 30px;
+            top: -15px;
+            right: 10px;
+        }
+
+        .cloud4 {
             width: 180px;
-            height: 180px;
-            top: -90px;
-            right: 50px;
-            border-radius: 200px;
-            -webkit-border-radius: 200px;
-            -moz-border-radius: 200px;
+            height: 70px;
+            bottom: 30%;
+            right: 25%;
+            animation: moveCloud4 18s linear infinite alternate-reverse;
         }
 
-        .x1 {
-            top: -50px;
-            left: 100px;
-            -webkit-transform: scale(.3);
-            -moz-transform: scale(.3);
-            transform: scale(.3);
-            opacity: .9;
-            -webkit-animation: moveclouds 15s linear infinite;
-            -moz-animation: moveclouds 15s linear infinite;
-            -o-animation: moveclouds 15s linear infinite;
+        .cloud4::before {
+            width: 60px;
+            height: 60px;
+            top: -25px;
+            left: 15px;
         }
 
-        .x1_5 {
-            top: -80px;
-            left: 250px;
-            -webkit-transform: scale(.3);
-            -moz-transform: scale(.3);
-            transform: scale(.3);
-            -webkit-animation: moveclouds 17s linear infinite;
-            -moz-animation: moveclouds 17s linear infinite;
-            -o-animation: moveclouds 17s linear infinite;
+        /* Keyframes untuk Animasi Awan */
+        @keyframes moveCloud1 {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(20px); }
         }
 
-        .x2 {
-            left: 250px;
-            top: 30px;
-            -webkit-transform: scale(.6);
-            -moz-transform: scale(.6);
-            transform: scale(.6);
-            opacity: .6;
-            -webkit-animation: moveclouds 25s linear infinite;
-            -moz-animation: moveclouds 25s linear infinite;
-            -o-animation: moveclouds 25s linear infinite;
+        @keyframes moveCloud2 {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-30px); }
         }
 
-        .x3 {
-            left: 250px;
-            bottom: -70px;
-            -webkit-transform: scale(.6);
-            -moz-transform: scale(.6);
-            transform: scale(.6);
-            opacity: .8;
-            -webkit-animation: moveclouds 25s linear infinite;
-            -moz-animation: moveclouds 25s linear infinite;
-            -o-animation: moveclouds 25s linear infinite;
+        @keyframes moveCloud3 {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(15px); }
         }
 
-        .x4 {
-            left: 470px;
-            bottom: 20px;
-            -webkit-transform: scale(.75);
-            -moz-transform: scale(.75);
-            transform: scale(.75);
-            opacity: .75;
-            -webkit-animation: moveclouds 18s linear infinite;
-            -moz-animation: moveclouds 18s linear infinite;
-            -o-animation: moveclouds 18s linear infinite;
+        @keyframes moveCloud4 {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-25px); }
         }
 
-        .x5 {
-            left: 200px;
-            top: 300px;
-            -webkit-transform: scale(.5);
-            -moz-transform: scale(.5);
-            transform: scale(.5);
-            opacity: .8;
-            -webkit-animation: moveclouds 20s linear infinite;
-            -moz-animation: moveclouds 20s linear infinite;
-            -o-animation: moveclouds 20s linear infinite;
-        }
-
-        @-webkit-keyframes moveclouds {
-            0% {
-                margin-left: 1000px
-            }
-
-            100% {
-                margin-left: -1000px
-            }
-        }
-
-        @-moz-keyframes moveclouds {
-            0% {
-                margin-left: 1000px
-            }
-
-            100% {
-                margin-left: -1000px
-            }
-        }
-
-        @-o-keyframes moveclouds {
-            0% {
-                margin-left: 1000px
-            }
-
-            100% {
-                margin-left: -1000px
-            }
-        }
-
-        @import url('https://fonts.googleapis.com/css?family=Ruda:400,700'); /* Pastikan font ini tersedia */
+        @import url('https://fonts.googleapis.com/css2?family=Ruda:wght@400;700&display=swap');
     </style>
 </head>
 <body>
-    <div id='igniel404'>
-        <div id='error-text'>
-            <span>404</span>
-            <p>HALAMAN TIDAK DITEMUKAN!</p>
-            <p><a class='back' href='https://thisonky.web.app' title='Kembali ke Beranda'>Kembali Ke Halaman Awal</a></p>
-            <div id='copyright'>
-                <a href='https://thisonky.web.app' title='Website ThisOnky'>ThisOnky</a> © <script>document.write(new Date().getFullYear())</script>. All Rights Reserved
-            </div>
-        </div>
+    <div id="error-container">
+        <h1 class="error-code">404</h1>
+        <p class="error-message">HALAMAN TIDAK DITEMUKAN!</p>
+        <p><a href="/" class="back-link">Kembali Ke Halaman Awal</a></p>
+        <p class="copyright">Example © 2017 - <script>document.write(new Date().getFullYear())</script>. All Rights Reserved</p>
     </div>
-    <div id='clouds'>
-        <div class='cloud x1'/>
-        <div class='cloud x1_5'/>
-        <div class='cloud x2'/>
-        <div class='cloud x3'/>
-        <div class='cloud x4'/>
-        <div class='cloud x5'/>
-    </div>
+
+    <div class="cloud cloud1"></div>
+    <div class="cloud cloud2"></div>
+    <div class="cloud cloud3"></div>
+    <div class="cloud cloud4"></div>
 </body>
 </html>
