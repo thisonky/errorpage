@@ -5,74 +5,236 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Halaman Tidak Ditemukan - 404</title>
     <style>
-        /* Revisi Kode Halaman Error 404 - Memastikan Elemen Utama Terlihat */
+        /* Revisi Kode Halaman Error 404 dengan Background Awan */
         body, html {
             margin: 0;
             padding: 0;
             width: 100%;
             min-height: 100vh;
-            background-color: #f4f4f4; /* Latar belakang abu-abu muda */
+            background-color: #f4f4f4; /* Latar belakang dasar */
             color: #333; /* Warna teks utama gelap */
             font-family: sans-serif; /* Font standar yang aman */
-            display: flex;
-            justify-content: center; /* Tengah horizontal */
-            align-items: center; /* Tengah vertikal */
-            text-align: center; /* Pusatkan teks di dalam body */
+            text-align: center; /* Pusatkan teks di body */
+            overflow: hidden; /* Sembunyikan scrollbar jika awan keluar batas */
         }
 
-        .error-container {
-            background-color: #fff; /* Wadah konten putih */
+        #igniel404 {
+            position: fixed; /* Agar tetap di tengah viewport */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Memusatkan secara sempurna */
+            background-color: rgba(255, 255, 255, 0.8); /* Latar belakang semi-transparan untuk kontras teks */
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 10; /* Pastikan teks berada di atas awan */
         }
 
-        .error-code {
+        #error-text span {
             font-size: 5em;
-            color: #d32f2f; /* Warna merah untuk kode error */
+            color: #d32f2f;
             margin-bottom: 10px;
-            display: block; /* Pastikan sebagai blok */
+            display: block;
         }
 
-        .error-message {
+        #error-text p {
             font-size: 1.5em;
             margin-bottom: 20px;
-            display: block; /* Pastikan sebagai blok */
+            display: block;
         }
 
-        .back-link {
+        #error-text a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        #error-text a.back {
             display: inline-block;
             padding: 10px 20px;
-            background-color: #007bff; /* Warna biru untuk tombol kembali */
+            background-color: #007bff;
             color: white;
-            text-decoration: none;
             border-radius: 5px;
             transition: background-color 0.3s ease;
-            margin-bottom: 20px;
         }
 
-        .back-link:hover {
+        #error-text a.back:hover {
             background-color: #0056b3;
         }
 
-        .copyright-text {
+        #error-text #copyright {
             font-size: 0.8em;
             color: #777;
-            display: block; /* Pastikan sebagai blok */
+            margin-top: 20px;
+            display: block;
         }
 
-        /* Menyembunyikan elemen awan untuk fokus pada teks (bisa dihapus jika awan penting) */
+        /* Gaya Awan */
         #clouds {
-            display: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: 1; /* Pastikan awan berada di bawah teks */
         }
+
+        .cloud {
+            width: 350px;
+            height: 120px;
+            background: #fff;
+            background: linear-gradient(top, #fff 100%);
+            background: -webkit-linear-gradient(top, #fff 100%);
+            background: -moz-linear-gradient(top, #fff 100%);
+            background: -ms-linear-gradient(top, #fff 100%);
+            background: -o-linear-gradient(top, #fff 100%);
+            border-radius: 100px;
+            -webkit-border-radius: 100px;
+            -moz-border-radius: 100px;
+            position: absolute;
+            z-index: -1; /* Pastikan di bawah elemen lain dalam #clouds */
+            transition: ease 1s;
+        }
+
+        .cloud:after,
+        .cloud:before {
+            content: '';
+            position: absolute;
+            background: #fff;
+            z-index: -1;
+        }
+
+        .cloud:after {
+            width: 100px;
+            height: 100px;
+            top: -50px;
+            left: 50px;
+            border-radius: 100px;
+            -webkit-border-radius: 100px;
+            -moz-border-radius: 100px;
+        }
+
+        .cloud:before {
+            width: 180px;
+            height: 180px;
+            top: -90px;
+            right: 50px;
+            border-radius: 200px;
+            -webkit-border-radius: 200px;
+            -moz-border-radius: 200px;
+        }
+
+        .x1 {
+            top: -50px;
+            left: 100px;
+            -webkit-transform: scale(.3);
+            -moz-transform: scale(.3);
+            transform: scale(.3);
+            opacity: .9;
+            -webkit-animation: moveclouds 15s linear infinite;
+            -moz-animation: moveclouds 15s linear infinite;
+            -o-animation: moveclouds 15s linear infinite;
+        }
+
+        .x1_5 {
+            top: -80px;
+            left: 250px;
+            -webkit-transform: scale(.3);
+            -moz-transform: scale(.3);
+            transform: scale(.3);
+            -webkit-animation: moveclouds 17s linear infinite;
+            -moz-animation: moveclouds 17s linear infinite;
+            -o-animation: moveclouds 17s linear infinite;
+        }
+
+        .x2 {
+            left: 250px;
+            top: 30px;
+            -webkit-transform: scale(.6);
+            -moz-transform: scale(.6);
+            transform: scale(.6);
+            opacity: .6;
+            -webkit-animation: moveclouds 25s linear infinite;
+            -moz-animation: moveclouds 25s linear infinite;
+            -o-animation: moveclouds 25s linear infinite;
+        }
+
+        .x3 {
+            left: 250px;
+            bottom: -70px;
+            -webkit-transform: scale(.6);
+            -moz-transform: scale(.6);
+            transform: scale(.6);
+            opacity: .8;
+            -webkit-animation: moveclouds 25s linear infinite;
+            -moz-animation: moveclouds 25s linear infinite;
+            -o-animation: moveclouds 25s linear infinite;
+        }
+
+        .x4 {
+            left: 470px;
+            bottom: 20px;
+            -webkit-transform: scale(.75);
+            -moz-transform: scale(.75);
+            transform: scale(.75);
+            opacity: .75;
+            -webkit-animation: moveclouds 18s linear infinite;
+            -moz-animation: moveclouds 18s linear infinite;
+            -o-animation: moveclouds 18s linear infinite;
+        }
+
+        .x5 {
+            left: 200px;
+            top: 300px;
+            -webkit-transform: scale(.5);
+            -moz-transform: scale(.5);
+            transform: scale(.5);
+            opacity: .8;
+            -webkit-animation: moveclouds 20s linear infinite;
+            -moz-animation: moveclouds 20s linear infinite;
+            -o-animation: moveclouds 20s linear infinite;
+        }
+
+        @-webkit-keyframes moveclouds {
+            0% {
+                margin-left: 1000px
+            }
+
+            100% {
+                margin-left: -1000px
+            }
+        }
+
+        @-moz-keyframes moveclouds {
+            0% {
+                margin-left: 1000px
+            }
+
+            100% {
+                margin-left: -1000px
+            }
+        }
+
+        @-o-keyframes moveclouds {
+            0% {
+                margin-left: 1000px
+            }
+
+            100% {
+                margin-left: -1000px
+            }
+        }
+
+        @import url('https://fonts.googleapis.com/css?family=Ruda:400,700');
     </style>
 </head>
 <body>
-    <div class="error-container">
-        <span class="error-code">404</span>
-        <p class="error-message">HALAMAN TIDAK DITEMUKAN!</p>
-        <p><a class="back-link" href="https://thisonky.web.app" title="Kembali ke Beranda">Kembali Ke Halaman Awal</a></p>
-        <p class="copyright-text">ThisOnky © <script>document.write(new Date().getFullYear())</script>. All Rights Reserved</p>
+    <div id='igniel404'>
+        <div id='error-text'>
+            <span>404</span>
+            <p>HALAMAN TIDAK DITEMUKAN!</p>
+            <p><a class='back' href='https://thisonky.web.app' title='Kembali ke Beranda'>Kembali Ke Halaman Awal</a></p>
+            <div id='copyright'>
+                <a href='https://thisonky.web.app' title='Website ThisOnky'>ThisOnky</a> © <script>document.write(new Date().getFullYear())</script>. All Rights Reserved
+            </div>
+        </div>
     </div>
     <div id='clouds'>
         <div class='cloud x1'/>
