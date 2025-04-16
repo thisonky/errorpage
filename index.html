@@ -5,8 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Halaman Tidak Ditemukan - 404</title>
     <style>
-        /* Error Page
-        =============================== */
+        /* Error Page - Diperbaiki agar elemen utama terlihat */
+        body, html {
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100vh;
+            background: #eceeee; /* Warna latar belakang yang jelas */
+            color: #1d2129; /* Warna teks utama yang jelas */
+            font-family: 'Ruda', sans-serif; /* Pastikan font dimuat */
+        }
+
+        #igniel404 {
+            text-align: center;
+            margin: auto;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            line-height: 1.25em;
+            z-index: 9999;
+            display: flex; /* Menggunakan flexbox untuk penataan tengah */
+            justify-content: center; /* Tengah horizontal */
+            align-items: center; /* Tengah vertikal */
+        }
+
+        #error-text {
+            text-align: center; /* Pusatkan teks di dalamnya */
+        }
+
+        #error-text span {
+            color: rgba(0, 0, 0, 0.9);
+            font-size: 100px;
+            display: block; /* Membuatnya baris baru dan lebih menonjol */
+            margin-bottom: 10px;
+        }
+
+        #error-text p {
+            margin: 10px 0 !important;
+            letter-spacing: 0.5px;
+            font-size: 20px; /* Ukuran font yang lebih terbaca */
+        }
+
+        #error-text a {
+            color: #888;
+            text-decoration: none;
+        }
+
+        #error-text a.back {
+            background: #212529;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 20px;
+            border-radius: 5px; /* Tambahkan sedikit sudut bulat */
+            transition: all 0.3s ease-out;
+            display: inline-block; /* Agar padding berfungsi dengan baik */
+            margin-top: 20px;
+        }
+
+        #error-text a.back:hover {
+            background: #424242;
+        }
+
+        #copyright {
+            font-size: 16px;
+            margin-top: 30px; /* Beri jarak dari tombol kembali */
+        }
+
+        #copyright a {
+            color: #000000;
+        }
+
+        /* Gaya Awan (tidak diubah, diasumsikan tidak mengganggu visibilitas teks) */
         .cloud {
             width: 350px;
             height: 120px;
@@ -155,117 +225,6 @@
         }
 
         @import url('https://fonts.googleapis.com/css?family=Ruda:400,700');
-
-        #header,
-        #outer-wrapper,
-        #post-wrapper,
-        #sidebar-wrapper,
-        #content-wrapper,
-        #footer-wrapper,
-        #wrapper,
-        .ignielToTop {
-            display: none
-        }
-
-        body,
-        html {
-            overflow: hidden;
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            min-height: 100vh
-        }
-
-        body {
-            background: #fff;
-            color: #1d2129
-        }
-
-        #igniel404 {
-            background: #eceeee;
-            text-align: center;
-            margin: auto;
-            font-weight: 700;
-            font-size: 45px;
-            font-family: 'Ruda', sans-serif;
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            line-height: 1.25em;
-            z-index: 9999;
-        }
-
-        #igniel404 #error-text {
-            position: relative;
-            font-size: 40px;
-            color: #666;
-            top: 50%;
-            right: 50%;
-            transform: translate(50%, -50%);
-        }
-
-        #igniel404 #error-text a {
-            color: #888;
-            text-decoration: none
-        }
-
-        #igniel404 #error-text p {
-            margin: 0 !important;
-            letter-spacing: .5px;
-        }
-
-        #igniel404 #error-text span {
-            color: rgba(0, 0, 0, .9);
-            font-size: 100px;
-        }
-
-        #igniel404 #error-text a.back {
-            background: #212529;
-            color: #fff;
-            padding: 10px 20px;
-            font-size: 20px;
-            -webkit-transform: scale(1);
-            -moz-transform: scale(1);
-            transform: scale(1);
-            transition: all 0.5s ease-out;
-        }
-
-        #igniel404 #error-text a.back:hover {
-            background: #424242;
-            color: #fff;
-        }
-
-        #igniel404 #error-text a.back:active {
-            -webkit-transform: scale(0.9);
-            -moz-transform: scale(0.9);
-            transform: scale(0.9);
-            background: #333;
-            color: #fff;
-            border: double #eceeee;
-        }
-
-        #igniel404 #error-text #copyright {
-            font-size: 16px
-        }
-
-        #igniel404 #error-text #copyright a {
-            color: #000000;
-        }
-
-        @media only screen and (max-width: 640px) {
-            #igniel404 #error-text {
-                font-size: 20px;
-            }
-
-            #igniel404 #error-text span {
-                font-size: 60px;
-            }
-
-            #igniel404 #error-text a.back {
-                padding: 5px 10px;
-                font-size: 15px;
-            }
-        }
     </style>
 </head>
 <body>
@@ -281,9 +240,9 @@
         <div id='error-text'>
             <span>404</span>
             <p>HALAMAN TIDAK DITEMUKAN!</p>
-            <p><a class='back' href='https://thisonky.web.app' title='Judul Website Anda'>Kembali Ke Halaman Awal</a></p>
+            <p><a class='back' href='https://thisonky.web.app' title='Kembali ke Beranda'>Kembali Ke Halaman Awal</a></p>
             <div id='copyright'>
-                <a href='/' title='Judul Website Anda'>Nama Website Anda</a> © 2017 - <script>document.write(new Date().getFullYear())</script>. All Rights Reserved
+                <a href='https://thisonky.web.app' title='Website ThisOnky'>ThisOnky</a> © 2017 - <script>document.write(new Date().getFullYear())</script>. All Rights Reserved
             </div>
         </div>
     </div>
